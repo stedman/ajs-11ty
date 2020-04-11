@@ -1,0 +1,100 @@
+---
+layout: layout
+---
+<div class="columns is-desktop is-variable is-8-desktop">
+  <div class="column is-two-thirds">
+    <h1 class="title">{{ title }}</h1>
+    <div class="content">
+      {{ content | safe }}
+    </div>
+
+    <div class="message">
+      <div class="message-header">
+        Meetup
+      </div>
+      <div class="message-body">
+        <div>
+          DATE <span class="icon has-text-grey-dark">
+            <ion-icon name="calendar"></ion-icon>
+          </span> <time class="has-text-primary has-text-weight-bold" dateTime="{{ page.date.toISOString().substring(0,10) }}">{{ page.date | fullDate }}</time>
+        </div>
+
+        <div>
+          TIME <span class="icon has-text-grey-dark">
+            <ion-icon name="alarm"></ion-icon>
+          </span> <time class="has-text-primary has-text-weight-bold" dateTime="15:30">7:30PM</time> - <time class="has-text-primary has-text-weight-bold" dateTime="21:00">9:00PM</time>
+        </div>
+
+        {% set venueOrg = organizations[venue.key] %}
+        <div>
+          LOCATION <span class="icon has-text-grey-dark">
+            <ion-icon name="flag"></ion-icon>
+          </span>
+          <strong class="has-text-primary">{{ venueOrg.name }}</strong>
+          {% if venueOrg.location %}
+          <em>({{ venueOrg.location }})</em>
+          {% endif %}}
+        </div>
+        <div style="margin-top: 0.5em">
+          Check back here or <a href="https://twitter.com/AustinJS">@AustinJS on Twitter</a> for updates.
+        </div>
+
+        {% if after.key %}
+        {% set afterOrg = organizations[after.key] %}
+        <div class="has-offset-top">
+          Afterwards, the discussion carries on at <strong>
+            {% if afterOrg.url %}
+            <a href="{{ afterOrg.url }}">{{ afterOrg.name }}</a>
+            {% else %}
+            {{ afterOrg.name }}
+            {% endif %}
+          </strong> ({{ afterOrg.location }}).
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="column has-offset-top">
+    <h2 class="title is-sr-only">Speaker</h2>
+    {% for person in speakers %}
+    <div class="has-offset-top">
+      {% include 'business-card.njk' %}
+    </div>
+    {% endfor%}
+  </div>
+</div>
+{% if sponsor.key %}
+<div class="section">
+  <div class="tile">
+    <div class="tile is-child content">
+      <h3>Sponsor</h3>
+      {% set sponsorOrg = organizations[sponsor.key] %}
+      <p>Drinks and pizza for this event will be provided by the wonderful folks at <a href="{{ sponsorOrg.url }}">{{ sponsorOrg.name }}</a>.</p>
+      {% if sponsor.hiring and sponsorOrg.careerUrl %}
+      <p>
+        {{ sponsorOrg.name }} is hiring. Check out their <a href="{{ sponsorOrg.careerUrl }}">Career page</a> for more information.
+      </p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<div class="columns is-variable is-8 has-offset-top">
+  <div class="column">
+    <!-- {pagination.previous
+      && (
+        <Link to={pagination.previous.slug}>
+          ← {pagination.previous.title}
+        </Link>
+      )} -->
+  </div>
+  <div class="column has-text-right">
+    <!-- {pagination.next
+      && (
+        <Link to={pagination.next.slug}>
+          {pagination.next.title} →
+        </Link>
+      )} -->
+  </div>
+</div>

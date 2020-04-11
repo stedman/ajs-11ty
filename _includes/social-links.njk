@@ -1,0 +1,30 @@
+{% if person.email %}
+  <a href="mailto:{{ person.email }}" title="Email: {{ person.email }}" >
+    <ion-icon name="at-circle">email</ion-icon>
+  </a>
+{% endif %}
+
+{% if person.url %}
+  <a href="{{ person.url }}" title="Home: {{ person.url }}" >
+    <ion-icon name="home"></ion-icon>
+  </a>
+{% endif %}
+
+{% if person.twitter %}
+  <a href="https://twitter.com/{{ person.twitter }}" title="Twitter: {{ person.twitter }}" >
+    <ion-icon name="logo-twitter"></ion-icon>
+  </a>
+</a>
+{% endif %}
+
+{% if person.github %}
+  <a href="https://github.com/{{ person.github }}" title="GitHub: {{ person.github }}" >
+    <ion-icon name="logo-github"></ion-icon>
+  </a>
+{% endif %}
+
+{% if person.linkedin %}
+  <a href="https://www.linkedin.com/in/{{ person.linkedin }}" title="LinkedIn: {{ person.linkedin }}" >
+    <ion-icon name="logo-linkedin"></ion-icon>
+  </a>
+{% endif %}
