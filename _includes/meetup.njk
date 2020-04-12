@@ -14,20 +14,29 @@ layout: layout
       </div>
       <div class="message-body">
         <div>
-          DATE <span class="icon has-text-grey-dark">
+          DATE
+          <span class="icon has-text-grey-dark">
             <ion-icon name="calendar"></ion-icon>
-          </span> <time class="has-text-primary has-text-weight-bold" dateTime="{{ page.date.toISOString().substring(0,10) }}">{{ page.date | fullDate }}</time>
+          </span>
+          <time
+            class="has-text-primary has-text-weight-bold"
+            dateTime="{{ page.date.toISOString().substring(0, 10) }}"
+            >{{ page.date | fullDate }}</time>
         </div>
 
         <div>
-          TIME <span class="icon has-text-grey-dark">
+          TIME
+          <span class="icon has-text-grey-dark">
             <ion-icon name="alarm"></ion-icon>
-          </span> <time class="has-text-primary has-text-weight-bold" dateTime="15:30">7:30PM</time> - <time class="has-text-primary has-text-weight-bold" dateTime="21:00">9:00PM</time>
+          </span>
+          <time class="has-text-primary has-text-weight-bold" dateTime="15:30">7:30PM</time> -
+          <time class="has-text-primary has-text-weight-bold" dateTime="21:00">9:00PM</time>
         </div>
 
         {% set venueOrg = organizations[venue.key] %}
         <div>
-          LOCATION <span class="icon has-text-grey-dark">
+          LOCATION
+          <span class="icon has-text-grey-dark">
             <ion-icon name="flag"></ion-icon>
           </span>
           <strong class="has-text-primary">{{ venueOrg.name }}</strong>
@@ -35,20 +44,22 @@ layout: layout
           <em>({{ venueOrg.location }})</em>
           {% endif %}}
         </div>
-        <div style="margin-top: 0.5em">
+        <div style="margin-top: 0.5em;">
           Check back here or <a href="https://twitter.com/AustinJS">@AustinJS on Twitter</a> for updates.
         </div>
 
         {% if after.key %}
         {% set afterOrg = organizations[after.key] %}
         <div class="has-offset-top">
-          Afterwards, the discussion carries on at <strong>
+          Afterwards, the discussion carries on at
+          <strong>
             {% if afterOrg.url %}
             <a href="{{ afterOrg.url }}">{{ afterOrg.name }}</a>
             {% else %}
             {{ afterOrg.name }}
             {% endif %}
-          </strong> ({{ afterOrg.location }}).
+          </strong>
+          ({{ afterOrg.location }}).
         </div>
         {% endif %}
       </div>
@@ -69,7 +80,9 @@ layout: layout
     <div class="tile is-child content">
       <h3>Sponsor</h3>
       {% set sponsorOrg = organizations[sponsor.key] %}
-      <p>Drinks and pizza for this event will be provided by the wonderful folks at <a href="{{ sponsorOrg.url }}">{{ sponsorOrg.name }}</a>.</p>
+      <p>
+        Drinks and pizza for this event will be provided by the wonderful folks at <a href="{{ sponsorOrg.url }}">{{ sponsorOrg.name }}</a>.
+      </p>
       {% if sponsor.hiring and sponsorOrg.careerUrl %}
       <p>
         {{ sponsorOrg.name }} is hiring. Check out their <a href="{{ sponsorOrg.careerUrl }}">Career page</a> for more information.
@@ -81,20 +94,17 @@ layout: layout
 {% endif %}
 
 <div class="columns is-variable is-8 has-offset-top">
+  {# Because meetups are listed in reverse order, swap next and previous. #}
+  {% set previousPost = collections.meetups | getNextCollectionItem(page) %}
+  {% set nextPost = collections.meetups | getPreviousCollectionItem(page) %}
   <div class="column">
-    <!-- {pagination.previous
-      && (
-        <Link to={pagination.previous.slug}>
-          ← {pagination.previous.title}
-        </Link>
-      )} -->
+  {% if previousPost %}
+    <a href="{{ previousPost.url }}">← {{ previousPost.data.title }}</a>
+  {% endif %}
   </div>
   <div class="column has-text-right">
-    <!-- {pagination.next
-      && (
-        <Link to={pagination.next.slug}>
-          {pagination.next.title} →
-        </Link>
-      )} -->
+  {% if nextPost %}
+    <a href="{{ nextPost.url }}">{{ nextPost.data.title }} →</a>
+  {% endif %}
   </div>
 </div>
