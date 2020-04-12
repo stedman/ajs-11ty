@@ -7,7 +7,7 @@ title: Archive
   <ul>
     {% for post in collections.meetups %}
     <li>
-      <a href="{{ post.url }}">
+      <a href="{{ post.url | url }}">
         {{ post.inputPath.substring(8,18) }}:
         <span className="has-text-weight-semibold">{{ post.data.title }}</span>
       </a>

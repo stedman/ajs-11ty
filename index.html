@@ -7,7 +7,7 @@ title: Austin JavaScript
     <div class="content is-medium">
       <h1>Austin JavaScript</h1>
       <p>We are a community-driven group that meets to discuss JavaScript and the open web.</p>
-      <p>We work hard to build a community that treats people with excellence. We've formalized this in the <a href="/code-of-conduct/">Austin JavaScript Code of Conduct</a>.</p>
+      <p>We work hard to build a community that treats people with excellence. We've formalized this in the <a href="{{ site.pagePath.conduct | url }}">Austin JavaScript Code of Conduct</a>.</p>
     </div>
   </div>
   <div class="column">
@@ -15,10 +15,10 @@ title: Austin JavaScript
       <h3>Recent activity</h3>
       <ul>
         {% for post in collections.meetups %}
-        <li><a href="{{ post.url }}">{{ post.data.title }}</a></li>
+        <li><a href="{{ post.url | url }}">{{ post.data.title }}</a></li>
         {% endfor %}
       </ul>
-      <p><a href="/posts/">More...</a></p>
+      <p><a href="{{ site.pagePath.posts | url }}">More...</a></p>
     </div>
   </div>
 </div>

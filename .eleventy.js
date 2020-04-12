@@ -49,7 +49,7 @@ module.exports = (eleventyConfig) => {
       output: './_site'
     },
     passthroughFileCopy: true,
-    pathPrefix: '',
+    pathPrefix: '/ajs-11ty/',
     templateFormats: [
       "html",
       "liquid",

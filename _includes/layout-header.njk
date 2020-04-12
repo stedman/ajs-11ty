@@ -4,18 +4,18 @@
       <div class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <figure class="image is-96x96">
-            <img src="/assets/img/austinjavascript-icon.png" alt="logo">
+            <img src="{{ site.pathPrefix }}assets/img/austinjavascript-icon.png" alt="logo">
           </figure>
-          <a href="/" class="navbar-item title has-text-white is-size-1-tablet">
+          <a href="{{ site.pagePath.home | url }}" class="navbar-item title has-text-white is-size-1-tablet">
             {{ site.title }}
           </a>
         </div>
         <div class="navbar-menu is-size-4">
           <div class="navbar-end">
-            <a href="/" class="navbar-item">
+            <a href="{{ site.pagePath.home | url }}" class="navbar-item">
               Home
             </a>
-            <a href="/posts/" class="navbar-item">
+            <a href="{{ site.pagePath.posts | url }}" class="navbar-item">
               Archive
             </a>
           </div>

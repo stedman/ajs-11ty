@@ -2,5 +2,14 @@
   "title": "Austin JavaScript",
   "description": "WIP: AustinJS homepage built with (-surprise-) JavaScript.",
   "author": "@AustinJS",
-  "repo": "https://github.com/austinjavascript/austinjavascript.github.io"
+  "twitter": "AustinJS",
+  "repo": "https://github.com/austinjavascript/austinjavascript.github.io",
+  "pathPrefix": "/ajs-11ty/",
+  "pagePath": {
+    "about": "/about/",
+    "conduct": "/code-of-conduct/",
+    "contributing": "/contributing/",
+    "home": "/",
+    "posts": "/posts/"
+  }
 }
