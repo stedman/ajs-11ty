@@ -30,7 +30,7 @@ layout: layout
           <time class="has-text-primary has-text-weight-bold" dateTime="21:00">9:00PM</time>
         </div>
 
-        {% set venueOrg = organizations[venue.key] %}
+        {% set venueOrg = organizations[venue] %}
         <div>
           LOCATION
           <span class="icon has-text-grey-dark">
@@ -45,8 +45,8 @@ layout: layout
           Check back here or <a href="https://twitter.com/{{ site.twitter }}">@{{ site.twitter }} on Twitter</a> for updates.
         </div>
 
-        {% if after.key %}
-        {% set afterOrg = organizations[after.key] %}
+        {% if after %}
+        {% set afterOrg = organizations[after] %}
         <div class="has-offset-top">
           Afterwards, the discussion carries on at
           <strong>
@@ -71,12 +71,28 @@ layout: layout
     {% endfor%}
   </div>
 </div>
-{% if sponsor.key %}
+{% if sponsor.name and sponsor.url %}
 <div class="section">
   <div class="tile">
     <div class="tile is-child content">
       <h3>Sponsor</h3>
-      {% set sponsorOrg = organizations[sponsor.key] %}
+      <p>
+        Drinks and pizza for this event will be provided by the wonderful folks at <a href="{{ sponsor.url }}">{{ sponsor.name }}</a>.
+      </p>
+      {% if sponsor.careerUrl %}
+      <p>
+        {{ sponsor.name }} is hiring. Check out their <a href="{{ sponsor.careerUrl }}">Career page</a> for more information.
+      </p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% elif sponsor %}
+<div class="section">
+  <div class="tile">
+    <div class="tile is-child content">
+      <h3>Sponsor</h3>
+      {% set sponsorOrg = organizations[sponsor] %}
       <p>
         Drinks and pizza for this event will be provided by the wonderful folks at <a href="{{ sponsorOrg.url }}">{{ sponsorOrg.name }}</a>.
       </p>
