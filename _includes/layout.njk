@@ -22,7 +22,7 @@
   <footer class="footer has-background-white has-border-top-medium has-offset-top">
     <div class="container">
       <div class="navbar">
-        <div class="navbar-menu">
+        <div class="navbar-menu is-active">
           <div class="navbar-start">
             <a href="{{ '/' | url }}" class="navbar-item">
               © {{ page.date.getFullYear() }} Austin JavaScript
@@ -35,6 +35,9 @@
             </a>
             <a href="{{ '/contributing/' | url }}" class="navbar-item">
               Contributing
+            </a>
+            <a href="{{ '/posts/' | url }}" class="navbar-item is-hidden-desktop">
+              Archive
             </a>
           </div>
         </div>

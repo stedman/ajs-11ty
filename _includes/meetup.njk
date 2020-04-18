@@ -2,13 +2,13 @@
 layout: layout
 ---
 <div class="columns is-desktop is-variable is-8-desktop">
-  <div class="column is-two-thirds">
-    <h1 class="title">{{ title }}</h1>
-    <div class="content">
+  <div class="column is-two-thirds flex-container">
+    <h1 class="title flex-item">{{ title }}</h1>
+    <div class="content flex-item">
       {{ content | safe }}
     </div>
 
-    <div class="message">
+    <div class="message flex-item flex-item-0">
       <div class="message-header">
         Meetup
       </div>
