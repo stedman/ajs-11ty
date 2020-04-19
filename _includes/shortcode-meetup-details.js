@@ -4,20 +4,19 @@ const filterFullDate = require('./filter-full-date');
 
 module.exports = function meetupDetails(meetDate, venue, after, msgHeader, meetTitle, meetUrl) {
   const header = msgHeader || 'Meetup details';
-  const meet = {
-    date: meetDate,
-    venue: venue,
-    after: after,
-    title: meetTitle,
-    url: meetUrl
-  };
 
-  const venueOrg = organizations[meet.venue];
+  const meetHeader = meetTitle && meetUrl
+    ? `<div class="title is-size-4">
+        <a href="${meetUrl}">${meetTitle}</a>
+      </div>`
+    : '';
+
+  const venueOrg = organizations[venue];
   const venueLocation = venueOrg.location
     ? `<em>(${venueOrg.location})</em>`
     : '';
 
-  const afterOrg = organizations[meet.after];
+  const afterOrg = organizations[after];
   let afterBlock = '';
 
   if (afterOrg) {
@@ -38,16 +37,14 @@ module.exports = function meetupDetails(meetDate, venue, after, msgHeader, meetT
   </div>
 
   <div class="message-body">
-    <div class="title is-size-4">
-      <a href="${meet.url}">${meet.title}</a>
-    </div>
+    ${meetHeader}
 
     <div>
       DATE
       <span class="icon has-text-grey-dark">
         <ion-icon name="calendar"></ion-icon>
       </span>
-      <time class="has-text-primary has-text-weight-bold" dateTime="${meet.date.toISOString().substring(0, 10)}">${filterFullDate(meet.date)}</time>
+      <time class="has-text-primary has-text-weight-bold" dateTime="${meetDate.toISOString().substring(0, 10)}">${filterFullDate(meetDate)}</time>
     </div>
 
     <div>
