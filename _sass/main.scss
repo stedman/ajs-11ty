@@ -11,6 +11,10 @@ $info: $tetradic1;
 
 @import "../node_modules/bulma/bulma.sass";
 
+/*
+ * BUSINESS CARD ADJUSTMENTS
+ */
+
 .card {
   // Increase ion-icon size https://ionicons.com/usage
   ion-icon {
@@ -24,6 +28,9 @@ $info: $tetradic1;
   }
 }
 
+/*
+ * CUSTOMIZATIONS
+ */
 
 .has-text-tetradic1 {
   color: $tetradic1 !important;
@@ -45,15 +52,21 @@ $info: $tetradic1;
   border-top: 10px solid $white-ter;
 }
 
+.has-margin-top {
+  margin-top: 1em;
+}
+
 @media screen and (min-width: $tablet) {
   .has-offset-top {
     margin-top: 1em;
     padding-top: 1em;
   }
+
   .has-offset-top-2 {
     margin-top: 2em;
     padding-top: 1em;
   }
+
   .has-offset-top-3 {
     margin-top: 3em;
     padding-top: 1em;
@@ -89,7 +102,7 @@ $info: $tetradic1;
  * MEETUP FLEX LAYOUT
  */
 
- @media screen and (max-width:768px) {
+ @media screen and (max-width: $tablet) {
   .flex-container {
     display: flex;
     flex-wrap: wrap;
@@ -115,8 +128,6 @@ a[title] {
 a[title]:before,
 a[title]:after {
   visibility: hidden;
-  // -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  // filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
   pointer-events: none;
   transition: 0.5s opacity;
@@ -131,10 +142,7 @@ a[title]:before {
   margin-left: -80px;
   padding: 7px;
   width: 160px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
   border-radius: 3px;
-  background-color: #000;
   background-color: hsla(0, 0%, 20%, 0.95);
   color: #fff;
   content: attr(title);
@@ -150,7 +158,6 @@ a[title]:after {
   left: 50%;
   margin-left: -5px;
   width: 0;
-  border-top: 5px solid #000;
   border-top: 5px solid hsla(0, 0%, 20%, 0.95);
   border-right: 5px solid transparent;
   border-left: 5px solid transparent;
@@ -163,7 +170,5 @@ a[title]:after {
 a[title]:hover:before,
 a[title]:hover:after {
   visibility: visible;
-  // -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-  // filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
