@@ -1,8 +1,14 @@
 module.exports = (eleventyConfig) => {
-  // Copy the `assets` directory to the compiled site folder
+  // PASSTHRU: Copy the `assets` directory to the compiled site folder
   eleventyConfig.addPassthroughCopy('assets');
 
-  // Add appropriate TARGET and REL to external links.
+  // COLLECTION: Create meetup posts collection.
+  eleventyConfig.addCollection('meetups', (collection) => {
+    // Reverse the collection (to LIFO) so collections.meetups[0] is always the upcoming|latest meetup.
+    return collection.getFilteredByGlob('./posts/**meetup.md').reverse();
+  });
+
+  // TRANSFORM: Add appropriate TARGET and REL to external links.
   eleventyConfig.addTransform('external-link-rel', (content) => {
     const desired = {
       target: 'target="_blank"',
@@ -27,21 +33,39 @@ module.exports = (eleventyConfig) => {
     });
   });
 
-  // Convert dates to MMMM D, YYYY format.
-  eleventyConfig.addNunjucksFilter('fullDate', (value) => {
+  // NUNJUCKS: Convert dates to MMMM D, YYYY format.
+  eleventyConfig.addNunjucksFilter('fullDate', (input) => {
     const monthNames = [
       'January', 'February', 'March', 'April', 'May', 'June',
       'July', 'August', 'September', 'October', 'November', 'December'
     ];
-    const newDate = new Date(value);
+    const newDate = new Date(input);
 
     return `${monthNames[newDate.getMonth()]} ${newDate.getDate()}, ${newDate.getFullYear()}`;
   });
 
-  // Create meetup posts collection.
-  eleventyConfig.addCollection('meetups', (collection) => {
-    // Reverse the collection (to LIFO) so collections.meetups[0] is always the upcoming|latest meetup.
-    return collection.getFilteredByGlob('./posts/**meetup.md').reverse();
+  // NUNJUCKS: Limit array length (https://gist.github.com/jbmoelker/9693778)
+  eleventyConfig.addNunjucksFilter('limitTo', (input, limit) => {
+    if (typeof limit !== 'number') {
+      return input;
+    }
+
+    if (typeof input === 'string'){
+      if (limit >= 0) {
+        return input.substring(0, limit);
+      } else {
+        return input.substr(limit);
+      }
+    }
+    if (Array.isArray(input)) {
+      limit = Math.min(limit, input.length);
+      if (limit >= 0) {
+        return input.splice(0, limit);
+      } else {
+        return input.splice(input.length + limit, input.length);
+      }
+    }
+    return input;
   });
 
   return {

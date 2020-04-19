@@ -14,7 +14,7 @@ title: Austin JavaScript
     <div class="content has-offset-top-3">
       <h3>Recent activity</h3>
       <ul>
-        {% for post in collections.meetups %}
+        {% for post in collections.meetups | limitTo(5) %}
         <li><a href="{{ post.url | url }}">{{ post.data.title }}</a></li>
         {% endfor %}
       </ul>
