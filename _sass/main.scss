@@ -1,0 +1,169 @@
+@charset "utf-8";
+
+// tetradic harmony via https://color.joelb.dev/hex/ED1878
+$tetradic0: hsl(333, 85%, 50%);
+$tetradic1: hsl(213, 85%, 50%);
+$tetradic2: hsl(153, 85%, 40%); // lightness reduced by 10%
+$tetradic3: hsl(33, 85%, 50%);
+
+$primary: $tetradic0;
+$info: $tetradic1;
+
+@import "../node_modules/bulma/bulma.sass";
+
+.card {
+  // Increase ion-icon size https://ionicons.com/usage
+  ion-icon {
+    font-size: 2em;
+  }
+
+  // Add rounded edges to Bulma .image class inside a .card.
+  .image {
+    border-radius: 0.25em;
+    overflow: hidden;
+  }
+}
+
+
+.has-text-tetradic1 {
+  color: $tetradic1 !important;
+}
+.has-text-tetradic2 {
+  color: $tetradic2 !important;
+}
+.has-text-tetradic3 {
+  color: $tetradic3 !important;
+}
+
+.has-border-top {
+  border-top: 1px solid $white-ter;
+}
+.has-border-top-medium {
+  border-top: 5px solid $white-ter;
+}
+.has-border-top-large {
+  border-top: 10px solid $white-ter;
+}
+
+@media screen and (min-width: $tablet) {
+  .has-offset-top {
+    margin-top: 1em;
+    padding-top: 1em;
+  }
+  .has-offset-top-2 {
+    margin-top: 2em;
+    padding-top: 1em;
+  }
+  .has-offset-top-3 {
+    margin-top: 3em;
+    padding-top: 1em;
+  }
+}
+
+.is-marginless-bottom {
+  margin-bottom: 0 !important;
+}
+
+/*
+ * BRICKS FOR EMERITUS CARDS
+ */
+
+.bricks-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: -0.15em;
+
+  .brick {
+    flex: 1 1 18em;
+    margin: 0.15em;
+    max-width: 25em;
+  }
+}
+
+.brick {
+  margin-bottom: 1em;
+}
+
+/*
+ * MEETUP FLEX LAYOUT
+ */
+
+ @media screen and (max-width:768px) {
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .flex-item {
+    flex: 0 0 100%;
+  }
+  .flex-item-0 {
+    margin-bottom: 2em;
+    order: -1;
+  }
+}
+
+/*
+ * TOOLTIP
+ */
+
+a[title] {
+  position: relative;
+}
+
+/* Hide the tooltip content by default */
+a[title]:before,
+a[title]:after {
+  visibility: hidden;
+  // -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  // filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s opacity;
+}
+
+/* Position tooltip above the element */
+a[title]:before {
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  margin-bottom: 5px;
+  margin-left: -80px;
+  padding: 7px;
+  width: 160px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #000;
+  background-color: hsla(0, 0%, 20%, 0.95);
+  color: #fff;
+  content: attr(title);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+/* Triangle hack to make tooltip look like a speech bubble */
+a[title]:after {
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -5px;
+  width: 0;
+  border-top: 5px solid #000;
+  border-top: 5px solid hsla(0, 0%, 20%, 0.95);
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  content: " ";
+  font-size: 0;
+  line-height: 0;
+}
+
+/* Show tooltip content on hover */
+a[title]:hover:before,
+a[title]:hover:after {
+  visibility: visible;
+  // -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  // filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}

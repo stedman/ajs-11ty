@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm run clean && eleventy",
+    "build": "npm run clean && css-build && eleventy",
     "clean": "rm -rf ./_site",
+    "css-build": "node-sass _sass/main.scss assets/css/main.css --output-style compressed",
+    "css-dev": "node-sass _sass/main.scss assets/css/main.css",
+    "css-watch": "npm run css-dev -- --watch",
     "deploy": "npm run build && gh-pages -d _site",
     "start": "eleventy --serve --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,10 +18,12 @@
   "license": "WTFPL",
   "devDependencies": {
     "@11ty/eleventy": "0.11.0-beta.3",
+    "bulma": "^0.8.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
     "gh-pages": "^2.2.0",
+    "node-sass": "^4.13.1",
     "prettier": "2.0.4"
   }
 }
