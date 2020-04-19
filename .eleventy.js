@@ -40,6 +40,7 @@ module.exports = (eleventyConfig) => {
 
   // Create meetup posts collection.
   eleventyConfig.addCollection('meetups', (collection) => {
+    // Reverse the collection (to LIFO) so collections.meetups[0] is always the upcoming|latest meetup.
     return collection.getFilteredByGlob('./posts/**meetup.md').reverse();
   });
 
