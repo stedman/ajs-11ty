@@ -1,3 +1,6 @@
+const scMeetupDetails = require('./_includes/shortcode-meetup-details');
+const filterFullDate = require('./_includes/filter-full-date');
+
 module.exports = (eleventyConfig) => {
   // PASSTHRU: Copy the `assets` directory to the compiled site folder
   eleventyConfig.addPassthroughCopy('assets');
@@ -7,6 +10,9 @@ module.exports = (eleventyConfig) => {
     // Reverse the collection (to LIFO) so collections.meetups[0] is always the upcoming|latest meetup.
     return collection.getFilteredByGlob('./posts/**meetup.md').reverse();
   });
+
+  // NUNJUCKS SHORTCODE: Format meeting details message block.
+  eleventyConfig.addShortcode('meetupDetails', scMeetupDetails);
 
   // TRANSFORM: Add appropriate TARGET and REL to external links.
   eleventyConfig.addTransform('external-link-rel', (content) => {
@@ -33,19 +39,11 @@ module.exports = (eleventyConfig) => {
     });
   });
 
-  // NUNJUCKS: Convert dates to MMMM D, YYYY format.
-  eleventyConfig.addNunjucksFilter('fullDate', (input) => {
-    const monthNames = [
-      'January', 'February', 'March', 'April', 'May', 'June',
-      'July', 'August', 'September', 'October', 'November', 'December'
-    ];
-    const newDate = new Date(input);
+  // FILTER: Convert dates to MMMM D, YYYY format.
+  eleventyConfig.addFilter('fullDate', filterFullDate);
 
-    return `${monthNames[newDate.getMonth()]} ${newDate.getDate()}, ${newDate.getFullYear()}`;
-  });
-
-  // NUNJUCKS: Limit array length (https://gist.github.com/jbmoelker/9693778)
-  eleventyConfig.addNunjucksFilter('limitTo', (input, limit) => {
+  // FILTER: Limit array length (https://gist.github.com/jbmoelker/9693778)
+  eleventyConfig.addFilter('limitTo', (input, limit) => {
     if (typeof limit !== 'number') {
       return input;
     }

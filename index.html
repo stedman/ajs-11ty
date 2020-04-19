@@ -2,16 +2,37 @@
 layout: layout
 title: Austin JavaScript
 ---
-<div class="columns is-variable is-8-desktop">
+<section class="columns is-variable is-8-desktop">
   <div class="column is-two-thirds">
     <div class="content is-medium">
-      <h1>Austin JavaScript</h1>
-      <p>We are a community-driven group that meets to discuss JavaScript and the open web.</p>
-      <p>We work hard to build a community that treats people with excellence. We've formalized this in the <a href="{{ '/code-of-conduct/' | url }}">Austin JavaScript Code of Conduct</a>.</p>
+      <h1 class="is-sr-only">Austin JavaScript</h1>
+
+      <section class="meetup-details">
+        {% set meet = collections.meetups[0] %}
+        {% meetupDetails meet.date, meet.data.venue, meet.data.after, 'Upcoming meetup details', meet.data.title, meet.url | url %}
+
+        <meta id="meet-date" time="{{ meet.date }}">
+        <script>
+          (function () {
+            const meetDate = document.getElementById('meet-date').getAttribute('time');
+
+            if (new Date(meetDate) < new Date()) {
+              // We may want to post an alternate message, but for now just delete the upcoming meetup.
+              document.querySelector('.meetup-details').remove();
+            }
+          }());
+        </script>
+      </section>
+
+      <section class="section">
+        <p>We are a community-driven group that meets to discuss JavaScript and the open web.</p>
+        <p>We work hard to build a community that treats people with excellence. We've formalized this in the <a href="{{ '/code-of-conduct/' | url }}">Austin JavaScript Code of Conduct</a>.</p>
+      </section>
     </div>
   </div>
+
   <div class="column">
-    <div class="content has-offset-top-3">
+    <div class="content">
       <h3>Recent activity</h3>
       <ul>
         {% for post in collections.meetups | limitTo(5) %}
@@ -21,4 +42,4 @@ title: Austin JavaScript
       <p><a href="{{ '/posts/' | url }}">More...</a></p>
     </div>
   </div>
-</div>
+</section>

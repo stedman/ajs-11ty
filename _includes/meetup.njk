@@ -8,60 +8,9 @@ layout: layout
       {{ content | safe }}
     </div>
 
-    <div class="message flex-item flex-item-0">
-      <div class="message-header">
-        Meetup
-      </div>
-      <div class="message-body">
-        <div>
-          DATE
-          <span class="icon has-text-grey-dark">
-            <ion-icon name="calendar"></ion-icon>
-          </span>
-          <time class="has-text-primary has-text-weight-bold" dateTime="{{ page.date.toISOString().substring(0, 10) }}">{{ page.date | fullDate }}</time>
-        </div>
-
-        <div>
-          TIME
-          <span class="icon has-text-grey-dark">
-            <ion-icon name="alarm"></ion-icon>
-          </span>
-          <time class="has-text-primary has-text-weight-bold" dateTime="15:30">7:30PM</time> -
-          <time class="has-text-primary has-text-weight-bold" dateTime="21:00">9:00PM</time>
-        </div>
-
-        {% set venueOrg = organizations[venue] %}
-        <div>
-          LOCATION
-          <span class="icon has-text-grey-dark">
-            <ion-icon name="flag"></ion-icon>
-          </span>
-          <strong class="has-text-primary">{{ venueOrg.name }}</strong>
-          {% if venueOrg.location %}
-          <em>({{ venueOrg.location }})</em>
-          {% endif %}}
-        </div>
-        <div style="margin-top: 0.5em;">
-          Check back here or <a href="https://twitter.com/{{ site.twitter }}">@{{ site.twitter }} on Twitter</a> for updates.
-        </div>
-
-        {% if after %}
-        {% set afterOrg = organizations[after] %}
-        <div class="has-offset-top">
-          Afterwards, the discussion carries on at
-          <strong>
-            {% if afterOrg.url %}
-            <a href="{{ afterOrg.url }}">{{ afterOrg.name }}</a>
-            {% else %}
-            {{ afterOrg.name }}
-            {% endif %}
-          </strong>
-          ({{ afterOrg.location }}).
-        </div>
-        {% endif %}
-      </div>
-    </div>
+    {% meetupDetails page.date, venue, after %}
   </div>
+
   <div class="column has-offset-top">
     <h2 class="title is-sr-only">Speaker</h2>
     {% for person in speakers %}
@@ -71,6 +20,7 @@ layout: layout
     {% endfor%}
   </div>
 </div>
+
 {% if sponsor.name and sponsor.url %}
 <div class="section">
   <div class="tile">
@@ -87,6 +37,7 @@ layout: layout
     </div>
   </div>
 </div>
+
 {% elif sponsor %}
 <div class="section">
   <div class="tile">

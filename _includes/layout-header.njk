@@ -24,3 +24,11 @@
     </div>
   </div>
 </header>
+
+{% if page.url == '/' %}
+<section class="hero">
+  <figure class="image">
+    <img src="{{ '/assets/img/carlos-alfonso-AlBgcDfDG_s-unsplash_3by1-prog1.jpg' | url }}" alt="Austin skyline" title="Photo by Carlos Alfonso on Unsplash">
+  </figure>
+</section>
+{% endif %}
