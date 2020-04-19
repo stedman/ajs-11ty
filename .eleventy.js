@@ -54,15 +54,16 @@ module.exports = (eleventyConfig) => {
       if (limit >= 0) {
         return input.substring(0, limit);
       } else {
-        return input.substr(limit);
+        return input.substring(limit);
       }
     }
     if (Array.isArray(input)) {
-      limit = Math.min(limit, input.length);
-      if (limit >= 0) {
-        return input.splice(0, limit);
+      const minLimit = Math.min(limit, input.length);
+
+      if (minLimit >= 0) {
+        return input.slice(0, minLimit);
       } else {
-        return input.splice(input.length + limit, input.length);
+        return input.slice(input.length + minLimit, input.length);
       }
     }
     return input;
