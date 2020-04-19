@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm run clean && css-build && eleventy",
+    "build": "npm run clean && npm run css-build && eleventy",
     "clean": "rm -rf ./_site",
     "css-build": "node-sass _sass/main.scss assets/css/main.css --output-style compressed",
     "css-dev": "node-sass _sass/main.scss assets/css/main.css",
