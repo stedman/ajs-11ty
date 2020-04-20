@@ -12,23 +12,6 @@ $info: $tetradic1;
 @import "../node_modules/bulma/bulma.sass";
 
 /*
- * BUSINESS CARD ADJUSTMENTS
- */
-
-.card {
-  // Increase ion-icon size https://ionicons.com/usage
-  ion-icon {
-    font-size: 2em;
-  }
-
-  // Add rounded edges to Bulma .image class inside a .card.
-  .image {
-    border-radius: 0.25em;
-    overflow: hidden;
-  }
-}
-
-/*
  * CUSTOMIZATIONS
  */
 
@@ -78,6 +61,82 @@ $info: $tetradic1;
 }
 
 /*
+ * TOOLTIP
+ */
+
+.tooltip[title] {
+  position: relative;
+
+  .pic & {
+    display: inline-block;
+  }
+
+  /* Hide the tooltip content by default */
+  &:before,
+  &:after {
+    bottom: 100%;
+    left: 50%;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    transition: 0.5s opacity;
+    visibility: hidden;
+    z-index: 100;
+  }
+
+  /* Position tooltip above the element */
+  &:before {
+    background-color: hsla(0, 0%, 20%, 0.95);
+    border-radius: 3px;
+    color: #fff;
+    content: attr(title);
+    font-size: 14px;
+    line-height: 1.2;
+    margin-bottom: 5px;
+    margin-left: -80px;
+    padding: 7px;
+    text-align: center;
+    width: 160px;
+  }
+
+  /* Triangle hack to make tooltip look like a speech bubble */
+  &:after {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid hsla(0, 0%, 20%, 0.95);
+    content: " ";
+    font-size: 0;
+    line-height: 0;
+    margin-left: -5px;
+    width: 0;
+  }
+
+  /* Show tooltip content on hover */
+  &:hover:before,
+  &:hover:after {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/*
+ * BUSINESS CARD ADJUSTMENTS
+ */
+
+ .card {
+  // Increase ion-icon size https://ionicons.com/usage
+  ion-icon {
+    font-size: 2em;
+  }
+
+  // Add rounded edges to Bulma .image class inside a .card.
+  .image {
+    border-radius: 0.25em;
+    overflow: hidden;
+  }
+}
+
+/*
  * BRICKS FOR EMERITUS CARDS
  */
 
@@ -99,7 +158,7 @@ $info: $tetradic1;
 }
 
 /*
- * MEETUP FLEX LAYOUT
+ * MEETUP FLEX LAYOUT (to swap details up on mobile)
  */
 
  @media screen and (max-width: $tablet) {
@@ -117,58 +176,28 @@ $info: $tetradic1;
 }
 
 /*
- * TOOLTIP
+ * HOMEPAGE PICS
  */
 
-a[title] {
-  position: relative;
+.pic {
+  display: inline-block;
+  font-size: 1rem;
+  height: 50px;
+  margin: -1px !important;
+  width: 50px;
+  // transform-origin: 50% 100%;
+  // animation: wag 1s ease-out 0s alternate infinite none;
+
+  img {
+    border-radius: 5px;
+  }
 }
 
-/* Hide the tooltip content by default */
-a[title]:before,
-a[title]:after {
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.5s opacity;
-}
-
-/* Position tooltip above the element */
-a[title]:before {
-  position: absolute;
-  bottom: 150%;
-  left: 50%;
-  margin-bottom: 5px;
-  margin-left: -80px;
-  padding: 7px;
-  width: 160px;
-  border-radius: 3px;
-  background-color: hsla(0, 0%, 20%, 0.95);
-  color: #fff;
-  content: attr(title);
-  text-align: center;
-  font-size: 14px;
-  line-height: 1.2;
-}
-
-/* Triangle hack to make tooltip look like a speech bubble */
-a[title]:after {
-  position: absolute;
-  bottom: 150%;
-  left: 50%;
-  margin-left: -5px;
-  width: 0;
-  border-top: 5px solid hsla(0, 0%, 20%, 0.95);
-  border-right: 5px solid transparent;
-  border-left: 5px solid transparent;
-  content: " ";
-  font-size: 0;
-  line-height: 0;
-}
-
-/* Show tooltip content on hover */
-a[title]:hover:before,
-a[title]:hover:after {
-  visibility: visible;
-  opacity: 1;
+@keyframes wag {
+  0% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(-15deg);
+  }
 }
