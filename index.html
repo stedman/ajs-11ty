@@ -28,6 +28,21 @@ title: Austin JavaScript
         <p>We are a community-driven group that meets to discuss JavaScript and the open web.</p>
         <p>We work hard to build a community that treats people with excellence. We've formalized this in the <a href="{{ '/code-of-conduct/' | url }}">Austin JavaScript Code of Conduct</a>.</p>
       </section>
+
+      <section class="section">
+        <h3>Speaker alumni</h3>
+        {% for meetup in collections.meetups %}
+        {% for speaker in meetup.data.speakers %}
+        {% if speaker.name and speaker.picUrl %}
+        <figure class="pic">
+          <a class="tooltip" href="{{ meetup.url | url }}" title="{{ speaker.name }}: &quot;{{ meetup.data.title }}&quot;">
+            <img class="is-rounded" src="{{ speaker.picUrl }}" alt="{{ speaker.name }}">
+          </a>
+        </figure>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+      </section>
     </div>
   </div>
 
