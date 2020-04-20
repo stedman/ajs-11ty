@@ -25,7 +25,7 @@ title: Austin JavaScript
       </section>
 
       <section class="section">
-        <p>We are a community-driven group that meets to discuss JavaScript and the open web.</p>
+        <p>We are a community-driven group that meets to discuss JavaScript and the open web. Find out more <a href="{{ '/about/' | url }}">about us</a> or the many ways you can <a href="{{ '/contributing/' | url }}">contribute</a>.</p>
         <p>We work hard to build a community that treats people with excellence. We've formalized this in the <a href="{{ '/code-of-conduct/' | url }}">Austin JavaScript Code of Conduct</a>.</p>
       </section>
     </div>
@@ -33,13 +33,13 @@ title: Austin JavaScript
 
   <div class="column">
     <div class="content">
-      <h3>Recent activity</h3>
+      <h3>Recent meetups</h3>
       <ul>
         {% for post in collections.meetups | limitTo(5) %}
         <li><a href="{{ post.url | url }}">{{ post.data.title }}</a></li>
         {% endfor %}
       </ul>
-      <p><a href="{{ '/posts/' | url }}">More...</a></p>
+      <p><a href="{{ '/posts/' | url }}">More in Archive...</a></p>
     </div>
   </div>
 </section>
