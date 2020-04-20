@@ -14,9 +14,7 @@
 
   <main class="section">
     <div class="container">
-      <div class="">
-        {{ content | safe }}
-      </div>
+      {{ content | safe }}
     </div>
   </main>
 
@@ -25,19 +23,19 @@
       <div class="navbar">
         <div class="navbar-menu is-active">
           <div class="navbar-start">
-            <a href="{{ '/' | url }}" class="navbar-item">
-              © {{ page.date.getFullYear() }} Austin JavaScript
+            <a class="navbar-item" href="{{ '/' | url }}">
+              &copy; {{ page.date.getFullYear() }} Austin JavaScript
             </a>
-            <a href="{{ '/about/' | url }}" class="navbar-item">
+            <a class="navbar-item" href="{{ '/about/' | url }}">
               About
             </a>
-            <a href="{{ '/code-of-conduct/' | url }}" class="navbar-item">
+            <a class="navbar-item" href="{{ '/code-of-conduct/' | url }}">
               Code of Conduct
             </a>
-            <a href="{{ '/contributing/' | url }}" class="navbar-item">
+            <a class="navbar-item" href="{{ '/contributing/' | url }}">
               Contributing
             </a>
-            <a href="{{ '/posts/' | url }}" class="navbar-item is-hidden-desktop">
+            <a class="navbar-item is-hidden-desktop" href="{{ '/posts/' | url }}">
               Archive
             </a>
           </div>
