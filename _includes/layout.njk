@@ -5,12 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% if title != site.title %}{{ title }} • {% endif %}{{ site.title }}</title>
   <meta name="description" content="{{ site.description }}">
-  <link rel="icon" href="{{ '/assets/icon/favicon.svg' | url }}" type="image/png">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/icon/favicon-ios.png' | url }}" type="image/png">
+  <link rel="icon" sizes="192x192" href="{{ '/assets/icon/favicon-android.png' | url }}" type="image/png">
+  <link rel="icon" sizes="32x32" href="{{ '/assets/icon/favicon.png' | url }}" type="image/png">
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | url }}">
   <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 </head>
 <body>
-  {% include 'layout-header.njk' %}
+  <header class="hero is-primary">
+    <div class="hero-body is-paddingless">
+      <div class="container">
+        <div class="navbar" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand">
+            <figure class="image is-96x96">
+              <img src="{{ '/assets/icon/logo.svg' | url }}" alt="logo">
+            </figure>
+            <a href="{{ '/' | url }}" class="navbar-item title has-text-white is-size-1-tablet">
+              {{ site.title }}
+            </a>
+          </div>
+          <div class="navbar-menu is-size-4">
+            <div class="navbar-end">
+              <a class="navbar-item" href="{{ '/' | url }}">
+                Home
+              </a>
+              <a class="navbar-item" href="{{ '/posts/' | url }}">
+                Archive
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {% if page.url == '/' %}
+  <section class="hero">
+    <figure class="image">
+      <img src="{{ '/assets/img/carlos-alfonso-AlBgcDfDG_s-unsplash_3by1-prog1.jpg' | url }}" alt="Austin skyline" title="Photo by Carlos Alfonso on Unsplash">
+    </figure>
+  </section>
+  {% endif %}
 
   <main class="section">
     <div class="container">
@@ -43,6 +78,5 @@
       </div>
     </div>
   </footer>
-
 </body>
 </html>
