@@ -34,10 +34,12 @@ title: About
         <p>If you come across the following people, kindly open the door for them, help them to their seat, and thank them for their many years of service. They helped make Austin JavaScript what it is today.</p>
       </div>
       <div class="bricks-flex">
-        {% for person in people.emeriti %}
+        {% for key, person in people %}
+        {% if person.status == 'emeriti' %}
         <div class="brick">
           {% include 'business-card.njk' %}
         </div>
+        {% endif %}
         {% endfor %}
       </div>
     </div>
@@ -49,10 +51,12 @@ title: About
         <h2>The Organizers</h2>
         <p>Austin JavaScript is made possible by the hard work and goodwill of many people, but there are a few in particular that you should feel free to reach out to if you’ve got any questions:</p>
       </div>
-      {% for person in people.organizers %}
+      {% for key, person in people %}
+      {% if person.status == 'active' %}
       <div class="brick">
         {% include 'business-card.njk' %}
       </div>
+      {% endif %}
       {% endfor %}
     </div>
   </div>

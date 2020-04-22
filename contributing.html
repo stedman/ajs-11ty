@@ -71,10 +71,12 @@ title: Contributing
       <p>If you are interested in contributing, please contact one of our friendly Organizers:</p>
     </div>
 
-    {% for person in people.organizers %}
+    {% for key, person in people %}
+    {% if person.status == 'active' %}
     <div class="brick">
       {% include 'business-card.njk' %}
     </div>
+    {% endif %}
     {% endfor %}
   </div>
 </div>

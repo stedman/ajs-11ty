@@ -37,8 +37,11 @@ title: Code of Conduct
       <h3>Need help?</h3>
       <p>Contact an organizer in person or via e-mail:</p>
       <ul>
-        <li>Kevin Kipp: <a href="mailto:kevin.kipp@gmail.com">kevin.kipp@gmail.com</a></li>
-        <li>Patrick Costanzo: <a href="mailto:costanzo.patrick@gmail.com">costanzo.patrick@gmail.com</a></li>
+        {% for key, person in people %}
+        {% if person.status == 'active' %}
+        <li>{{ person.name }}: <a href="mailto:{{ person.email }}">{{ person.email }}</a></li>
+        {% endif %}
+        {% endfor %}
       </ul>
     </div>
   </div>
