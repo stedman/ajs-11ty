@@ -21,33 +21,30 @@ layout: layout
   </div>
 </div>
 
+{% if sponsor.name or sponsor %}
 {% if sponsor.name and sponsor.url %}
-<div class="section">
-  <div class="tile">
-    <div class="tile is-child content">
-      <h3>Sponsor</h3>
-      <p>
-        Drinks and pizza for this event will be provided by the wonderful folks at <a href="{{ sponsor.url }}">{{ sponsor.name }}</a>.
-      </p>
-      {% if sponsor.careerUrl %}
-      <p>
-        {{ sponsor.name }} is hiring. Check out their <a href="{{ sponsor.careerUrl }}">Career page</a> for more information.
-      </p>
-      {% endif %}
-    </div>
-  </div>
-</div>
-
+{% set sponsorOrg = sponsor %}
 {% elif sponsor %}
+{% set sponsorOrg = organizations[sponsor] %}
+{% endif %}
 <div class="section">
   <div class="tile">
     <div class="tile is-child content">
       <h3>Sponsor</h3>
-      {% set sponsorOrg = organizations[sponsor] %}
+      {% if sponsorOrg.logo %}
+      <figure class="image sponsor-logo">
+        <img src="{{ sponsorOrg.logo }}" alt="{{ sponsorOrg.name }}">
+      </figure>
+      {% endif %}
       <p>
         Drinks and pizza for this event will be provided by the wonderful folks at <a href="{{ sponsorOrg.url }}">{{ sponsorOrg.name }}</a>.
       </p>
-      {% if sponsor.hiring and sponsorOrg.careerUrl %}
+      {% if sponsorOrg.note %}
+      <p>
+        {{ sponsorOrg.note | safe }}
+      </p>
+      {% endif %}
+      {% if sponsorOrg.careerUrl %}
       <p>
         {{ sponsorOrg.name }} is hiring. Check out their <a href="{{ sponsorOrg.careerUrl }}">Career page</a> for more information.
       </p>
