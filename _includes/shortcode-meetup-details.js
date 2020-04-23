@@ -11,7 +11,9 @@ module.exports = function meetupDetails(meetDate, venue, after, msgHeader, meetT
       </div>`
     : '';
 
-  const venueOrg = organizations[venue];
+  const venueOrg = venue
+    ? organizations[venue]
+    : {};
   const venueLocation = venueOrg.location
     ? `<em>(${venueOrg.location})</em>`
     : '';

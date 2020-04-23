@@ -36,17 +36,22 @@ layout: layout
         <img src="{{ sponsorOrg.logo }}" alt="{{ sponsorOrg.name }}">
       </figure>
       {% endif %}
-      <p>
-        Drinks and pizza for this event will be provided by the wonderful folks at <a href="{{ sponsorOrg.url }}">{{ sponsorOrg.name }}</a>.
+
+      {% if sponsorOrg.message %}
+      <div>
+        {{ sponsorOrg.message | safe }}
+      </div>
+      {% elif sponsorOrg.name %}
+      <p>Austin JavaScript is sponsored this month by <a href="{{ sponsorOrg.url }}">{{ sponsorOrg.name }}</a>. Please thank them for their gracious gifts of pizza and drinks and for their support of the local JavaScript community.
+        {% if sponsorOrg.careerUrl %}
+        Ask them about their <a href="{{ sponsorOrg.careerUrl }}">job opportunities</a>!
+        {% endif %}
       </p>
+      {% endif %}
+
       {% if sponsorOrg.note %}
       <p>
         {{ sponsorOrg.note | safe }}
-      </p>
-      {% endif %}
-      {% if sponsorOrg.careerUrl %}
-      <p>
-        {{ sponsorOrg.name }} is hiring. Check out their <a href="{{ sponsorOrg.careerUrl }}">Career page</a> for more information.
       </p>
       {% endif %}
     </div>

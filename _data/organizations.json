@@ -3,8 +3,8 @@
     "name": "Cloudflare Austin",
     "url": "https://www.cloudflare.com/",
     "careerUrl": "https://www.cloudflare.com/careers/",
-    "location": "106 E 6th St, Austin, TX 78701, 4th Floor",
     "logo": "https://blog.cloudflare.com/content/images/2016/09/cf-blog-logo-crop.png",
+    "location": "106 E 6th St, Austin, TX 78701, 4th Floor",
     "note": null
   },
   "dataworld": {
@@ -70,6 +70,13 @@
     "location": null,
     "note": null
   },
+  "massrelevance": {
+    "name": "Mass Relevance",
+    "url": null,
+    "careerUrl": null,
+    "location": "8th and Brazos, Austin, TX 78701",
+    "note": null
+  },
   "mozilla": {
     "name": "Mozilla",
     "url": "https://www.mozilla.com/",
@@ -88,6 +95,7 @@
     "name": "RetailMeNot",
     "url": "https://www.retailmenot.com/",
     "careerUrl": null,
+    "logo": "https://i.imgur.com/GAULdrg.png",
     "location": "301 Congress Ave., Suite 700, Austin, TX 78701",
     "note": null
   },
