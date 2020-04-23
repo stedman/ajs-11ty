@@ -15,6 +15,14 @@ $info: $tetradic1;
  * CUSTOMIZATIONS
  */
 
+.hero.is-primary {
+  .navbar-item,
+  .navbar-link {
+    // reduce opacity for a11y color contrast
+    color: hsla(0, 100%, 100%, 0.8);
+  }
+}
+
 .has-text-tetradic1 {
   color: $tetradic1 !important;
 }
