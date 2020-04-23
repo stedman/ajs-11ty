@@ -36,7 +36,7 @@ title: Austin JavaScript
         {% if speaker.name and speaker.avatar %}
         <figure class="pic">
           <a class="tooltip" href="{{ meetup.url | url }}" title="{{ speaker.name }}: &quot;{{ meetup.data.title }}&quot;">
-            <img class="is-rounded" src="{{ speaker.avatar }}" alt="{{ speaker.name }}">
+            <img class="is-rounded" src="{{ speaker.avatar }}" alt="{{ speaker.name }}" loading="lazy">
           </a>
         </figure>
         {% endif %}
