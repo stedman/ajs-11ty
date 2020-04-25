@@ -15,6 +15,10 @@ $info: $tetradic1;
  * CUSTOMIZATIONS
  */
 
+.logo {
+  transform: scale(0.9);
+}
+
 .hero.is-primary {
   .navbar-item,
   .navbar-link {
@@ -136,7 +140,8 @@ $info: $tetradic1;
  * BUSINESS CARD ADJUSTMENTS
  */
 
- .card {
+ .card,
+ .footer {
   // Increase ion-icon size https://ionicons.com/usage
   ion-icon {
     font-size: 2em;

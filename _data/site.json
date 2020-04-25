@@ -3,5 +3,7 @@
   "description": "Austin JavaScript is a community-driven group that meets regularly to discuss JavaScript and the open web.",
   "author": "@AustinJS",
   "twitter": "AustinJS",
+  "github": "austinjavascript",
+  "slack": "austinjavascript",
   "repo": "https://github.com/austinjavascript/austinjavascript.github.io"
 }

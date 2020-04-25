@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="has-background-white-ter">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +17,7 @@
       <div class="container">
         <div class="navbar" role="navigation" aria-label="main navigation">
           <div class="navbar-brand">
-            <figure class="image is-96x96">
+            <figure class="image is-96x96 logo">
               <img src="{{ '/assets/icon/logo.svg' | url }}" alt="logo">
             </figure>
             <a href="{{ '/' | url }}" class="navbar-item title has-text-white is-size-1-tablet">
@@ -47,15 +47,15 @@
   </section>
   {% endif %}
 
-  <main class="section">
+  <main class="section has-background-white">
     <div class="container">
       {{ content | safe }}
     </div>
   </main>
 
-  <footer class="footer has-background-white has-border-top-medium has-offset-top">
+  <footer class="footer has-background-white-ter has-offset-top">
     <div class="container">
-      <div class="navbar">
+      <div class="navbar has-background-white-ter">
         <div class="navbar-menu is-active">
           <div class="navbar-start">
             <a class="navbar-item" href="{{ '/' | url }}">
@@ -73,6 +73,21 @@
             <a class="navbar-item is-hidden-desktop" href="{{ '/posts/' | url }}">
               Archive
             </a>
+          </div>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <a class="icon tooltip" href="https://twitter.com/{{ site.twitter }}" title="&ldquo;@{{ site.twitter }}&rdquo; on Twitter">
+                <ion-icon name="logo-twitter"><i class="is-sr-only">Twitter</i></ion-icon>
+              </a>
+              &nbsp;
+              <a class="icon tooltip" href="https://github.com/{{ site.github }}" title="&ldquo;{{ site.github }}&rdquo; on GitHub">
+                <ion-icon name="logo-github"><i class="is-sr-only">GitHub</i></ion-icon>
+              </a>
+              &nbsp;
+              <a class="icon tooltip" href="https://{{ site.slack }}.slack.com" title="&ldquo;{{ site.slack }}&rdquo; on Slack">
+                <ion-icon name="logo-slack"><i class="is-sr-only">Slack</i></ion-icon>
+              </a>
+            </div>
           </div>
         </div>
       </div>
