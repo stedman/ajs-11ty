@@ -7,11 +7,11 @@
     "location": "106 E 6th St, Austin, TX 78701, 4th Floor",
     "note": null
   },
-  "dataworld": {
-    "name": "data.world",
-    "url": "https://data.world",
-    "careerUrl": "https://data-world.breezy.hr/",
-    "location": "N, 7000 Mopac Service Rd \\#425, Austin, TX 78731",
+  "draughthouse": {
+    "name": "The Draught House",
+    "url": "https://www.draughthouse.com/",
+    "careerUrl": null,
+    "location": "4112 Medical Pkwy, Austin, TX 78756",
     "note": null
   },
   "frog": {
@@ -111,6 +111,13 @@
     "url": "https://www.techspace.com/coworking-space-austin/central-business-district/",
     "careerUrl": null,
     "location": "98 San Jacinto Boulevard, Austin, TX 78701",
+    "note": null
+  },
+  "virtuegroup": {
+    "name": "Virtue Group",
+    "url": "http://www.virtuegroup.net/",
+    "careerUrl": null,
+    "location": "1206 W 43rd Street, Austin, TX 78756",
     "note": null
   }
 }
