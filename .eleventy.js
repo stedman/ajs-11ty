@@ -20,7 +20,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addTransform('external-link-rel', (content) => {
     const desired = {
       target: 'target="_blank"',
-      rel: 'rel="nofollow noopener noreferrer"'
+      rel: 'rel="nofollow noopener noreferrer"',
     };
     // Find all external links--lazily we'll assume those start with https.
     const reLinkMatch = /<a .*href="https?:\/\/[^"]+".*?>/g;
@@ -54,6 +54,7 @@ module.exports = (eleventyConfig) => {
       if (limit >= 0) {
         return input.substring(0, limit);
       }
+
       return input.substring(limit);
     }
     if (Array.isArray(input)) {
@@ -62,15 +63,17 @@ module.exports = (eleventyConfig) => {
       if (minLimit >= 0) {
         return input.slice(0, minLimit);
       }
+
       return input.slice(input.length + minLimit, input.length);
     }
+
     return input;
   });
 
   return {
     dir: {
       input: './',
-      output: './_site'
+      output: './_site',
     },
     passthroughFileCopy: true,
     pathPrefix: '/ajs-11ty/',
@@ -78,9 +81,9 @@ module.exports = (eleventyConfig) => {
       'html',
       'liquid',
       'md',
-      'njk'
+      'njk',
     ],
     htmlTemplateEngine: 'njk',
-    dataTemplateEngine: 'njk'
+    dataTemplateEngine: 'njk',
   };
 };

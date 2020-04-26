@@ -2,6 +2,18 @@ const organizations = require('../_data/organizations.json');
 const siteData = require('../_data/site.json');
 const filterFullDate = require('./filter-full-date');
 
+/**
+ * Provide template for meeting details.
+ *
+ * @param  {string}   meetDate   The meet date
+ * @param  {string}   venue      The venue
+ * @param  {string}   after      The after party gathering place
+ * @param  {string}   msgHeader  The message header (optional)
+ * @param  {string}   meetTitle  The meet title (optional)
+ * @param  {string}   meetUrl    The meet url (optional)
+ *
+ * @return {string}  Completed template
+ */
 module.exports = function meetupDetails(meetDate, venue, after, msgHeader, meetTitle, meetUrl) {
   const header = msgHeader || 'Meetup details';
 
