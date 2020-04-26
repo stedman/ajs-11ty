@@ -6,8 +6,10 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy('assets');
 
   // COLLECTION: Create meetup posts collection.
+  // eslint-disable-next-line arrow-body-style
   eleventyConfig.addCollection('meetups', (collection) => {
-    // Reverse the collection (to LIFO) so collections.meetups[0] is always the upcoming|latest meetup.
+    // Reverse the collection (to LIFO)
+    // so collections.meetups[0] is always the upcoming|latest meetup.
     return collection.getFilteredByGlob('./posts/**meetup.md').reverse();
   });
 
@@ -31,7 +33,7 @@ module.exports = (eleventyConfig) => {
 
       if (hasTarget && reRel.test(linkMatch)) {
         return linkMatch;
-      } else if (hasTarget) {
+      } if (hasTarget) {
         return linkMatch.replace('>', ` ${desired.rel}>`);
       }
 
@@ -48,21 +50,19 @@ module.exports = (eleventyConfig) => {
       return input;
     }
 
-    if (typeof input === 'string'){
+    if (typeof input === 'string') {
       if (limit >= 0) {
         return input.substring(0, limit);
-      } else {
-        return input.substring(limit);
       }
+      return input.substring(limit);
     }
     if (Array.isArray(input)) {
       const minLimit = Math.min(limit, input.length);
 
       if (minLimit >= 0) {
         return input.slice(0, minLimit);
-      } else {
-        return input.slice(input.length + minLimit, input.length);
       }
+      return input.slice(input.length + minLimit, input.length);
     }
     return input;
   });
@@ -75,12 +75,12 @@ module.exports = (eleventyConfig) => {
     passthroughFileCopy: true,
     pathPrefix: '/ajs-11ty/',
     templateFormats: [
-      "html",
-      "liquid",
-      "md",
-      "njk",
+      'html',
+      'liquid',
+      'md',
+      'njk'
     ],
-    htmlTemplateEngine: "njk",
-    dataTemplateEngine: "njk"
+    htmlTemplateEngine: 'njk',
+    dataTemplateEngine: 'njk'
   };
-}
+};

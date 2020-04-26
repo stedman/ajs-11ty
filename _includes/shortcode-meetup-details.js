@@ -30,7 +30,7 @@ module.exports = function meetupDetails(meetDate, venue, after, msgHeader, meetT
       Afterwards, the discussion carries on at
       <strong>${afterName}</strong>
       (${afterOrg.location}).
-    </p>`
+    </p>`;
   }
 
   return `<div class="message flex-item flex-item-0">

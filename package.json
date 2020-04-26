@@ -10,6 +10,8 @@
     "css-dev": "node-sass _sass/main.scss assets/css/main.css",
     "css-watch": "npm run css-dev -- --watch",
     "deploy": "npm run build && gh-pages -d _site",
+    "lint": "npx eslint --fix .eleventy.js ./_includes/*.js",
+    "mdlint": "npx markdownlint --fix ./posts/*.md",
     "start": "eleventy --serve --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,6 +25,8 @@
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
     "gh-pages": "^2.2.0",
+    "markdownlint": "^0.20.1",
+    "markdownlint-cli": "^0.22.0",
     "node-sass": "^4.13.1",
     "prettier": "2.0.4"
   }
