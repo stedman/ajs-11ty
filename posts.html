@@ -10,6 +10,16 @@ title: Archive
       <a href="{{ post.url | url }}">
         {{ post.inputPath.substring(8,18) }}:
         <span class="has-text-weight-semibold">{{ post.data.title }}</span>
+        {% if post.data.video %}
+        <span class="icon tooltip" title="video available">
+          <ion-icon name="videocam"></ion-icon>
+        </span>
+        {% endif %}
+        {% if post.data.slides %}
+        <span class="icon tooltip" title="slides available">
+          <ion-icon name="albums"></ion-icon>
+        </span>
+        {% endif %}
       </a>
     </li>
     {% endfor %}
