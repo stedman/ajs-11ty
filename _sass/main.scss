@@ -15,15 +15,24 @@ $info: $tetradic1;
  * CUSTOMIZATIONS
  */
 
-.logo {
-  transform: scale(0.9);
-}
-
 .hero.is-primary {
   .navbar-item,
   .navbar-link {
     // reduce opacity for a11y color contrast
     color: hsla(0, 100%, 100%, 0.8);
+  }
+}
+
+@media screen and (min-width: $desktop) {
+  .is-sr-only-desktop {
+    border: none !important;
+    clip: rect(0, 0, 0, 0) !important;
+    height: 0.01em !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    white-space: nowrap !important;
+    width: 0.01em !important;
   }
 }
 
@@ -70,6 +79,10 @@ $info: $tetradic1;
 
 .is-marginless-bottom {
   margin-bottom: 0 !important;
+}
+
+.logo {
+  transform: scale(0.9) translateY(0.25em);
 }
 
 .sponsor-logo {

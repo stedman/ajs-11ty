@@ -75,19 +75,24 @@
             </a>
           </div>
           <div class="navbar-end">
-            <div class="navbar-item">
-              <a class="icon tooltip" href="https://twitter.com/{{ site.twitter }}" title="&ldquo;@{{ site.twitter }}&rdquo; on Twitter">
-                <ion-icon name="logo-twitter"><i class="is-sr-only">Twitter</i></ion-icon>
-              </a>
-              &nbsp;
-              <a class="icon tooltip" href="https://github.com/{{ site.github }}" title="&ldquo;{{ site.github }}&rdquo; on GitHub">
-                <ion-icon name="logo-github"><i class="is-sr-only">GitHub</i></ion-icon>
-              </a>
-              &nbsp;
-              <a class="icon tooltip" href="https://{{ site.slack }}.slack.com" title="&ldquo;{{ site.slack }}&rdquo; on Slack">
-                <ion-icon name="logo-slack"><i class="is-sr-only">Slack</i></ion-icon>
-              </a>
-            </div>
+            <a class="navbar-item is-inline-block" href="https://twitter.com/{{ site.twitter }}">
+              <span class="is-sr-only-desktop">Twitter: @{{ site.twitter }}</span>
+              <span class="icon tooltip is-hidden-touch" title="&ldquo;@{{ site.twitter }}&rdquo; on Twitter">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </span>
+            </a>
+            <a class="navbar-item is-inline-block-desktop" href="https://{{ site.slack }}.slack.com">
+              <span class="is-hidden-desktop">Slack: {{ site.slack }}</span>
+              <span class="icon tooltip is-hidden-touch" title="&ldquo;{{ site.slack }}&rdquo; on Slack">
+                <ion-icon name="logo-slack"></ion-icon>
+              </span>
+            </a>
+            <a class="navbar-item is-inline-block-desktop" href="https://github.com/{{ site.github }}">
+              <span class="is-hidden-desktop">GitHub: {{ site.github }}</span>
+              <span class="icon tooltip is-hidden-touch" title="&ldquo;{{ site.github }}&rdquo; on GitHub">
+                <ion-icon name="logo-github"></ion-icon>
+              </span>
+            </a>
           </div>
         </div>
       </div>
