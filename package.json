@@ -19,6 +19,9 @@
   "keywords": [],
   "author": "Steve Stedman <steve@stedman.dev>",
   "license": "WTFPL",
+  "dependencies": {
+    "acorn": ">=5.7.4"
+  },
   "devDependencies": {
     "@11ty/eleventy": "0.11.0-beta.3",
     "bulma": "^0.8.2",
@@ -26,9 +29,9 @@
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
     "gh-pages": "^2.2.0",
-    "markdownlint": "^0.20.1",
+    "markdownlint": "^0.20.2",
     "markdownlint-cli": "^0.22.0",
-    "node-sass": "^4.13.1",
-    "prettier": "2.0.4"
+    "node-sass": "^4.14.0",
+    "prettier": "2.0.5"
   }
 }
