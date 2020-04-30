@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:css": "node-sass _sass/main.scss assets/css/main.css --output-style compressed",
-    "build": "npm run clean && npm run build:css && eleventy",
+    "build:css": "node-sass _sass/_main.scss _site/assets/css/main.css --output-style compressed",
+    "build": "npm run clean && eleventy && npm run build:css",
     "clean": "rm -rf ./_site",
-    "dev:css": "node-sass _sass/main.scss assets/css/main.css",
+    "dev:css": "node-sass _sass/_main.scss _site/assets/css/main.css",
     "deploy": "npm run build && gh-pages -d _site",
     "lint:js": "npx eslint --fix .eleventy.js ./_includes/*.js",
     "lint:md": "npx markdownlint --fix ./posts/*.md",
@@ -18,7 +18,7 @@
   },
   "keywords": [],
   "author": "Steve Stedman <steve@stedman.dev>",
-  "license": "WTFPL",
+  "license": "MIT",
   "dependencies": {
     "acorn": ">=5.7.4"
   },
