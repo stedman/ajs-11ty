@@ -74,14 +74,14 @@ module.exports = (eleventyConfig) => {
     dir: {
       input: './',
       output: './_site',
+      layouts: './_layouts',
     },
-    passthroughFileCopy: true,
     pathPrefix: '/ajs-11ty/',
     templateFormats: [
-      'html',
+      'njk',
       'liquid',
       'md',
-      'njk',
+      'html',
     ],
     htmlTemplateEngine: 'njk',
     dataTemplateEngine: 'njk',
