@@ -1,3 +1,4 @@
+const fs = require('fs');
 const scMeetupDetails = require('./_includes/shortcode-meetup-details');
 const filterFullDate = require('./_includes/filter-full-date');
 
@@ -6,11 +7,30 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy('assets');
 
   // COLLECTION: Create meetup posts collection.
-  // eslint-disable-next-line arrow-body-style
-  eleventyConfig.addCollection('meetups', (collection) => {
+  eleventyConfig.addCollection('meetups', async (collection) => {
+    const posts = collection.getFilteredByGlob('./posts/**meetup.md');
+    const statPromise = (fileUrl) => new Promise((resolve, reject) => {
+      fs.stat(
+        fileUrl,
+        (err, stats) => {
+          if (err) reject(err);
+
+          resolve(stats.mtime);
+        },
+      );
+    });
+
+    // Add file lastModified property
+    for (let idx = 0; idx < posts.length; idx += 1) {
+      const post = posts[idx];
+
+      // eslint-disable-next-line no-await-in-loop
+      post.lastModified = await statPromise(post.inputPath);
+    }
+
     // Reverse the collection (to LIFO)
     // so collections.meetups[0] is always the upcoming|latest meetup.
-    return collection.getFilteredByGlob('./posts/**meetup.md').reverse();
+    return posts.reverse();
   });
 
   // NUNJUCKS SHORTCODE: Format meeting details message block.

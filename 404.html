@@ -1,6 +1,11 @@
 ---
 layout: base
-title: Oops! Not Found
+title: Oops! Page not found
 permalink: 404.html
+skipSitemap: true
 ---
-<p>Like U2, we still haven't found what you're looking for. Try again from the <a href="{{ '/' | url }}">home page.</a></p>
+<div class="content">
+  <h1>{{ title }}</h1>
+  <p>Like U2, we still haven't found what you're looking for.</p>
+  <p>Please try again from the <a href="{{ '/' | url }}">home page.</a></p>
+</div>
