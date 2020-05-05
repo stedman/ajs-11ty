@@ -1,8 +1,12 @@
 const fs = require('fs');
+const pluginRss = require('@11ty/eleventy-plugin-rss');
 const scMeetupDetails = require('./_includes/shortcode-meetup-details');
 const filterFullDate = require('./_includes/filter-full-date');
 
 module.exports = (eleventyConfig) => {
+  // PLUGIN: RSS feed
+  eleventyConfig.addPlugin(pluginRss);
+
   // PASSTHRU: Copy the `assets` directory to the compiled site folder
   eleventyConfig.addPassthroughCopy('assets');
 
