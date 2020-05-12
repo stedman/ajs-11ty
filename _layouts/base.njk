@@ -31,8 +31,8 @@
               <a class="navbar-item" href="{{ '/' | url }}">
                 Home
               </a>
-              <a class="navbar-item" href="{{ '/posts/' | url }}">
-                Archive
+              <a class="navbar-item" href="{{ '/posts/meetups/' | url }}">
+                Meetups
               </a>
             </div>
           </div>
@@ -72,28 +72,31 @@
             <a class="navbar-item" href="{{ '/contributing/' | url }}">
               Contributing
             </a>
-            <a class="navbar-item is-hidden-desktop" href="{{ '/posts/' | url }}">
-              Archive
+            <a class="navbar-item" href="{{ '/posts/' | url }}">
+              Posts
+            </a>
+            <a class="navbar-item is-hidden-desktop" href="{{ '/posts/meetups/' | url }}">
+              Meetups
             </a>
           </div>
           <div class="navbar-end">
-            <a class="navbar-item is-inline-block" href="https://twitter.com/{{ site.author.twitter }}">
+            <a class="navbar-item is-inline-block-tablet" href="https://twitter.com/{{ site.author.twitter }}">
+              <span class="icon tooltip" title="&ldquo;@{{ site.author.twitter }}&rdquo; on Twitter">
+                <ion-icon class="is-size-3" name="logo-twitter"></ion-icon>
+              </span>
               <span class="is-sr-only-desktop">Twitter: @{{ site.author.twitter }}</span>
-              <span class="icon tooltip is-hidden-touch" title="&ldquo;@{{ site.author.twitter }}&rdquo; on Twitter">
-                <ion-icon name="logo-twitter"></ion-icon>
-              </span>
             </a>
-            <a class="navbar-item is-inline-block-desktop" href="https://{{ site.author.slack }}.slack.com">
+            <a class="navbar-item is-inline-block-tablet" href="https://{{ site.author.slack }}.slack.com">
+              <span class="icon tooltip" title="&ldquo;{{ site.author.slack }}&rdquo; on Slack">
+                <ion-icon class="is-size-3" name="logo-slack"></ion-icon>
+              </span>
               <span class="is-hidden-desktop">Slack: {{ site.author.slack }}</span>
-              <span class="icon tooltip is-hidden-touch" title="&ldquo;{{ site.author.slack }}&rdquo; on Slack">
-                <ion-icon name="logo-slack"></ion-icon>
-              </span>
             </a>
-            <a class="navbar-item is-inline-block-desktop" href="https://github.com/{{ site.author.github }}">
-              <span class="is-hidden-desktop">GitHub: {{ site.author.github }}</span>
-              <span class="icon tooltip is-hidden-touch" title="&ldquo;{{ site.author.github }}&rdquo; on GitHub">
-                <ion-icon name="logo-github"></ion-icon>
+            <a class="navbar-item is-inline-block-tablet" href="https://github.com/{{ site.author.github }}">
+              <span class="icon tooltip" title="&ldquo;{{ site.author.github }}&rdquo; on GitHub">
+                <ion-icon class="is-size-3" name="logo-github"></ion-icon>
               </span>
+              <span class="is-hidden-desktop">GitHub: {{ site.author.github }}</span>
             </a>
           </div>
         </div>

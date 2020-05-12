@@ -1,69 +1,53 @@
 const fs = require('fs');
 const pluginRss = require('@11ty/eleventy-plugin-rss');
-const scMeetupDetails = require('./_includes/shortcode-meetup-details');
-const filterFullDate = require('./_includes/filter-full-date');
+const scMeetupDetails = require('./_includes/shortcodes/meetup-details');
+const filterFullDate = require('./_includes/filters/full-date');
+const sassWatch = require('./_includes/sass-watch');
+
+/**
+ * Add date properties to collections.
+ *
+ * @param  {object}   posts   Collection to add date properties to.
+ * @return {object}           Augmented posts collection.
+ */
+const addData = (posts) => posts.map((post) => {
+  const stat = fs.statSync(post.inputPath) || {};
+
+  post.dateCreated = stat.birthtime;
+  post.dateModified = stat.mtime;
+
+  return post;
+});
 
 module.exports = (eleventyConfig) => {
+  // Watch Sass directory for styling changes.
+  // Works only in dev mode. Though it throws and error and then continues on.
+  if (process.env.ELEVENTY_ENV === 'dev') {
+    sassWatch('./_sass/_main.scss', './_site/assets/css/main.css');
+  }
+
   // PLUGIN: RSS feed
   eleventyConfig.addPlugin(pluginRss);
 
   // PASSTHRU: Copy the `assets` directory to the compiled site folder
   eleventyConfig.addPassthroughCopy('assets');
 
-  // COLLECTION: Create meetup posts collection.
-  eleventyConfig.addCollection('meetups', async (collection) => {
-    const posts = collection.getFilteredByGlob('./posts/**meetup.md');
-    const statPromise = (fileUrl) => new Promise((resolve, reject) => {
-      fs.stat(
-        fileUrl,
-        (err, stats) => {
-          if (err) reject(err);
+  // COLLECTION: Create meetup collection.
+  eleventyConfig.addCollection('meetups', (collection) => {
+    const posts = collection.getFilteredByGlob('./_meetups/**');
 
-          resolve(stats.mtime);
-        },
-      );
-    });
+    return addData(posts);
+  });
 
-    // Add file lastModified property
-    for (let idx = 0; idx < posts.length; idx += 1) {
-      const post = posts[idx];
+  // COLLECTION: Create post collection.
+  eleventyConfig.addCollection('posts', (collection) => {
+    const posts = collection.getFilteredByGlob('./_posts/**');
 
-      // eslint-disable-next-line no-await-in-loop
-      post.lastModified = await statPromise(post.inputPath);
-    }
-
-    // Reverse the collection (to LIFO)
-    // so collections.meetups[0] is always the upcoming|latest meetup.
-    return posts.reverse();
+    return addData(posts);
   });
 
   // NUNJUCKS SHORTCODE: Format meeting details message block.
   eleventyConfig.addShortcode('meetupDetails', scMeetupDetails);
-
-  // TRANSFORM: Add appropriate TARGET and REL to external links.
-  eleventyConfig.addTransform('external-link-rel', (content) => {
-    const desired = {
-      target: 'target="_blank"',
-      rel: 'rel="nofollow noopener noreferrer"',
-    };
-    // Find all external links--lazily we'll assume those start with https.
-    const reLinkMatch = /<a .*href="https?:\/\/[^"]+".*?>/g;
-    // Find target and rel attributes.
-    const reTarget = /.*target="([^"]+)".*/;
-    const reRel = /.*rel="([^"]+)".*/;
-
-    return content.replace(reLinkMatch, (linkMatch) => {
-      const hasTarget = reTarget.test(linkMatch);
-
-      if (hasTarget && reRel.test(linkMatch)) {
-        return linkMatch;
-      } if (hasTarget) {
-        return linkMatch.replace('>', ` ${desired.rel}>`);
-      }
-
-      return linkMatch.replace('>', ` ${desired.target} ${desired.rel}>`);
-    });
-  });
 
   // FILTER: Convert dates to MMMM D, YYYY format.
   eleventyConfig.addFilter('fullDate', filterFullDate);
@@ -92,6 +76,24 @@ module.exports = (eleventyConfig) => {
     }
 
     return input;
+  });
+
+  // BROWSERSYNBC: add ability to see 404.html in dev mode
+  eleventyConfig.setBrowserSyncConfig({
+    callbacks: {
+      ready(err, bs) {
+        bs.addMiddleware('*', (req, res) => {
+          const content_404 = fs.readFileSync('_site/404.html');
+          // Provides the 404 content without redirect.
+
+          res.write(content_404);
+          // Add 404 http status code in request header.
+          // res.writeHead(404, { "Content-Type": "text/html" });
+          res.writeHead(404);
+          res.end();
+        });
+      },
+    },
   });
 
   return {

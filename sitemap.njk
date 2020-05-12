@@ -9,7 +9,7 @@ reference: https://www.sitemaps.org/protocol.html
   {%- if item.data.layout %}
   <url>
     <loc>{{ site.url }}{{ item.url }}</loc>
-    <lastmod>{{ (item.lastModified if item.lastModified else item.date).toISOString() }}</lastmod>
+    <lastmod>{{ (item.dateModified if item.dateModified else item.date).toISOString() }}</lastmod>
   </url>
   {%- endif %}
   {%- endfor %}

@@ -2,19 +2,16 @@
   "name": "ajs-11ty",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "build:css": "node-sass _sass/_main.scss _site/assets/css/main.css --output-style compressed",
     "build": "npm run clean && eleventy && npm run build:css",
     "clean": "rm -rf ./_site",
-    "dev:css": "node-sass _sass/_main.scss _site/assets/css/main.css",
     "deploy": "npm run build && gh-pages -d _site",
     "lint:js": "npx eslint --fix .eleventy.js ./_includes/*.js",
     "lint:md": "npx markdownlint --fix ./posts/*.md",
     "lint": "npm run lint:js && npm run lint:md",
-    "start": "eleventy --serve --watch",
-    "test": "npm run lint",
-    "watch:css": "npm run dev:css -- --watch"
+    "start": "ELEVENTY_ENV=dev eleventy --serve --watch",
+    "test": "npm run lint"
   },
   "keywords": [],
   "author": "Steve Stedman <steve@stedman.dev>",
@@ -23,7 +20,7 @@
     "acorn": ">=5.7.4"
   },
   "devDependencies": {
-    "@11ty/eleventy": "0.11.0-beta.3",
+    "@11ty/eleventy": "^0.11.0",
     "@11ty/eleventy-plugin-rss": "^1.0.7",
     "bulma": "^0.8.2",
     "eslint": "^6.8.0",
@@ -32,7 +29,6 @@
     "gh-pages": "^2.2.0",
     "markdownlint": "^0.20.2",
     "markdownlint-cli": "^0.22.0",
-    "node-sass": "^4.14.0",
-    "prettier": "2.0.5"
+    "node-sass": "^4.14.0"
   }
 }

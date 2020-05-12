@@ -1,6 +1,6 @@
-const organizations = require('../_data/organizations.json');
-const siteData = require('../_data/site.json');
-const filterFullDate = require('./filter-full-date');
+const organizations = require('../../_data/organizations.json');
+const siteData = require('../../_data/site.json');
+const filterFullDate = require('../filters/full-date');
 
 /**
  * Provide template for meeting details.
@@ -82,7 +82,7 @@ module.exports = function meetupDetails(meetDate, venue, after, msgHeader, meetT
     ${afterBlock}
 
     <p class="has-margin-top">
-      Check back here or <a href="https://twitter.com/${siteData.twitter}">@${siteData.twitter} on Twitter</a> for updates.
+      Check back here or <a href="https://twitter.com/${siteData.author.twitter}">@${siteData.author.twitter} on Twitter</a> for updates.
     </p>
   </div>
 </div>`;

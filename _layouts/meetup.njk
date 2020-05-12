@@ -76,14 +76,14 @@ layout: base
 {% endif %}
 
 <div class="columns is-variable is-8 has-offset-top">
-  {# Because meetups are listed in reverse order, swap next and previous. #}
-  {% set previousPost = collections.meetups | getNextCollectionItem(page) %}
-  {% set nextPost = collections.meetups | getPreviousCollectionItem(page) %}
+  {% set nextPost = collections.meetups | getNextCollectionItem(page) %}
+  {% set previousPost = collections.meetups | getPreviousCollectionItem(page) %}
   <div class="column">
     {% if previousPost %}
     <a href="{{ previousPost.url | url }}">← {{ previousPost.data.title }}</a>
     {% endif %}
   </div>
+
   <div class="column has-text-right">
     {% if nextPost %}
     <a href="{{ nextPost.url | url }}">{{ nextPost.data.title }} →</a>
