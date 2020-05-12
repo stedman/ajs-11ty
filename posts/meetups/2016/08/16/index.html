@@ -4,14 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PWA&#39;s and TLA&#39;s, but definitely not SPA&#39;s • Austin JavaScript</title>
-  <meta name="description" content="PWA&amp;#39;s and TLA&amp;#39;s, but definitely not SPA&amp;#39;s
-
-.wowowow {
+  <meta name="description" content=".wowowow {
 display: inline-block;
 -webkit-animation: wow 2s infinite;
-animation: wow 2s...">
+animation: wow 2s infinite;
+}
+@-webkit-keyframes wow {
+0% {-webkit-transform:...">
   <link rel=canonical href="https://austinjavascript.com/ajs-11ty/posts/meetups/2016/08/16/">
-  <link rel=alternate type=application/atom+xml href="https://austinjavascript.com/ajs-11ty/feed.xml" title="Austin JavaScript" />
+  <link rel=alternate type=application/atom+xml href="https://austinjavascript.com/ajs-11ty/feed.xml" title="Austin JavaScript Atom feed" />
   <link rel="apple-touch-icon" type="image/png" href="/ajs-11ty/assets/icon/favicon-ios.png" sizes="180x180">
   <link rel="icon" type="image/png" href="/ajs-11ty/assets/icon/favicon-android.png" sizes="192x192">
   <link rel="icon" type="image/png" href="/ajs-11ty/assets/icon/favicon.png" sizes="32x32">
@@ -86,7 +87,7 @@ animation: wow 2s...">
   80%  {-webkit-transform: scale(1.2,1.0);transform: scale(1.2,1.0);}
   100% {-webkit-transform: scale(0.9,1.0);transform: scale(0.9,1.0);}
 }</style>
-<p>Come out next Tuesday, August 17, 2016, as Dave Rupert tells us how to <strike>make the mobile web great again</strike> make <span class="wowowow">Progressive Web Apps!</span></p>
+<p>Come out next Tuesday, August 16, 2016, as Dave Rupert tells us how to <strike>make the mobile web great again</strike> make <span class="wowowow">Progressive Web Apps!</span></p>
 
     </div>
 
@@ -101,7 +102,7 @@ animation: wow 2s...">
     <div>
       DATE
       <span class="icon has-text-grey-dark">
-        <ion-icon name="calendar"></ion-icon>
+        <ion-icon src="/ajs-11ty/assets/ionicon/calendar.svg"></ion-icon>
       </span>
       <time class="has-text-primary has-text-weight-bold" dateTime="2016-08-16">August 16, 2016</time>
     </div>
@@ -109,7 +110,7 @@ animation: wow 2s...">
     <div>
       TIME
       <span class="icon has-text-grey-dark">
-        <ion-icon name="alarm"></ion-icon>
+        <ion-icon src="/ajs-11ty/assets/ionicon/alarm.svg"></ion-icon>
       </span>
       <time class="has-text-primary has-text-weight-bold" dateTime="15:30">7:30PM</time> -
       <time class="has-text-primary has-text-weight-bold" dateTime="21:00">9:00PM</time>
@@ -118,7 +119,7 @@ animation: wow 2s...">
     <div>
       LOCATION
       <span class="icon has-text-grey-dark">
-        <ion-icon name="flag"></ion-icon>
+        <ion-icon src="/ajs-11ty/assets/ionicon/location-sharp.svg"></ion-icon>
       </span>
       <strong class="has-text-primary">Frog Design</strong>
       <em>(101 West 6th Street, Austin, TX 78701, 2nd Floor)</em>
@@ -171,19 +172,19 @@ animation: wow 2s...">
 
 
 <a class="icon tooltip" href="http://daverupert.com" title="Home: http://daverupert.com">
-  <ion-icon class="is-size-3" name="home"><i class="is-sr-only">homepage</i></ion-icon>
+  <ion-icon class="is-size-3" src="/ajs-11ty/assets/ionicon/home.svg"><i class="is-sr-only">homepage</i></ion-icon>
 </a>
 
 
 
 <a class="icon tooltip" href="https://twitter.com/davatron5000" title="Twitter: davatron5000">
-  <ion-icon class="is-size-3" name="logo-twitter"><i class="is-sr-only">Twitter</i></ion-icon>
+  <ion-icon class="is-size-3" src="/ajs-11ty/assets/ionicon/logo-twitter.svg"><i class="is-sr-only">Twitter</i></ion-icon>
 </a>
 
 
 
 <a class="icon tooltip" href="https://github.com/davatron5000" title="GitHub: davatron5000">
-  <ion-icon class="is-size-3" name="logo-github"><i class="is-sr-only">GitHub</i></ion-icon>
+  <ion-icon class="is-size-3" src="/ajs-11ty/assets/ionicon/logo-github.svg"><i class="is-sr-only">GitHub</i></ion-icon>
 </a>
 
 
@@ -250,6 +251,10 @@ animation: wow 2s...">
   </div>
 </div>
 
+
+      <p class="content has-text-right-desktop" style="font-size: 14px; margin-bottom: -2rem;">
+        <a href="https://github.com/stedman/ajs-11ty/blob/master/./_meetups/2016-08-16-meetup.md">Edit this page on GitHub</a>
+      </p>
     </div>
   </main>
 
@@ -280,19 +285,19 @@ animation: wow 2s...">
           <div class="navbar-end">
             <a class="navbar-item is-inline-block-tablet" href="https://twitter.com/AustinJS">
               <span class="icon tooltip" title="&ldquo;@AustinJS&rdquo; on Twitter">
-                <ion-icon class="is-size-3" name="logo-twitter"></ion-icon>
+                <ion-icon class="is-size-3" src="/ajs-11ty/assets/ionicon/logo-twitter.svg"></ion-icon>
               </span>
               <span class="is-sr-only-desktop">Twitter: @AustinJS</span>
             </a>
             <a class="navbar-item is-inline-block-tablet" href="https://austinjavascript.slack.com">
               <span class="icon tooltip" title="&ldquo;austinjavascript&rdquo; on Slack">
-                <ion-icon class="is-size-3" name="logo-slack"></ion-icon>
+                <ion-icon class="is-size-3" src="/ajs-11ty/assets/ionicon/logo-slack.svg"></ion-icon>
               </span>
               <span class="is-hidden-desktop">Slack: austinjavascript</span>
             </a>
             <a class="navbar-item is-inline-block-tablet" href="https://github.com/austinjavascript">
               <span class="icon tooltip" title="&ldquo;austinjavascript&rdquo; on GitHub">
-                <ion-icon class="is-size-3" name="logo-github"></ion-icon>
+                <ion-icon class="is-size-3" src="/ajs-11ty/assets/ionicon/logo-github.svg"></ion-icon>
               </span>
               <span class="is-hidden-desktop">GitHub: austinjavascript</span>
             </a>
