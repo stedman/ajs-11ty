@@ -2,6 +2,8 @@ const organizations = require('../../_data/organizations.json');
 const siteData = require('../../_data/site.json');
 const filterFullDate = require('../filters/full-date');
 
+const pathPrefix = '/ajs-11ty';
+
 /**
  * Provide template for meeting details.
  *
@@ -56,7 +58,7 @@ module.exports = function meetupDetails(meetDate, venue, after, msgHeader, meetT
     <div>
       DATE
       <span class="icon has-text-grey-dark">
-        <ion-icon name="calendar"></ion-icon>
+        <ion-icon src="${pathPrefix}/assets/ionicon/calendar.svg"></ion-icon>
       </span>
       <time class="has-text-primary has-text-weight-bold" dateTime="${meetDate.toISOString().substring(0, 10)}">${filterFullDate(meetDate)}</time>
     </div>
@@ -64,7 +66,7 @@ module.exports = function meetupDetails(meetDate, venue, after, msgHeader, meetT
     <div>
       TIME
       <span class="icon has-text-grey-dark">
-        <ion-icon name="alarm"></ion-icon>
+        <ion-icon src="${pathPrefix}/assets/ionicon/alarm.svg"></ion-icon>
       </span>
       <time class="has-text-primary has-text-weight-bold" dateTime="15:30">7:30PM</time> -
       <time class="has-text-primary has-text-weight-bold" dateTime="21:00">9:00PM</time>
@@ -73,7 +75,7 @@ module.exports = function meetupDetails(meetDate, venue, after, msgHeader, meetT
     <div>
       LOCATION
       <span class="icon has-text-grey-dark">
-        <ion-icon name="flag"></ion-icon>
+        <ion-icon src="${pathPrefix}/assets/ionicon/location-sharp.svg"></ion-icon>
       </span>
       <strong class="has-text-primary">${venueOrg.name}</strong>
       ${venueLocation}
