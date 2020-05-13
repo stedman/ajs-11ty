@@ -11,7 +11,6 @@
   <link rel="icon" type="image/png" href="{{ '/assets/icon/favicon-android.png' | url }}" sizes="192x192">
   <link rel="icon" type="image/png" href="{{ '/assets/icon/favicon.png' | url }}" sizes="32x32">
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | url }}">
-  <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 </head>
 <body>
   <header class="hero is-primary">
@@ -65,7 +64,7 @@
         <div class="navbar-menu is-active">
           <div class="navbar-start">
             <a class="navbar-item" href="{{ '/' | url }}">
-              &copy; {{ page.date.getFullYear() }} Austin JavaScript
+              &copy; {{ app.now.getFullYear() }} Austin JavaScript
             </a>
             <a class="navbar-item" href="{{ '/about/' | url }}">
               About
@@ -107,5 +106,6 @@
       </div>
     </div>
   </footer>
+  <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 </body>
 </html>
