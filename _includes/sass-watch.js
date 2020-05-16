@@ -4,11 +4,11 @@ const path = require('path');
 const sass = require('node-sass');
 
 /**
-  * Generate and save CSS.
-  *
-  * @param {string} _scssPath Path to SCSS src file.
-  * @param {string} _cssPath  Path to CSS dist files.
-  */
+ * Generate and save CSS.
+ *
+ * @param {string} _scssPath Path to SCSS src file.
+ * @param {string} _cssPath  Path to CSS dist files.
+ */
 const generateCss = (_scssPath, _cssPath) => {
   // Encapsulate rendered css from _scssPath into renderedCss variable
   const renderedCss = sass.renderSync({ file: _scssPath });
