@@ -9,23 +9,24 @@ meta:
   <p>{{ meta.description }}</p>
 
   <ul>
-    {% for post in collections.meetups | reverse %}
+    {%- assign meetups = collections.meetups -%}
+    {%- for post in meetups -%}
     <li>
       <a href="{{ post.url | url }}">
-        {{ post.inputPath.substring(11, 21) }}:
+        {{ post.inputPath | slice: 11, 10 }}:
         <span class="has-text-weight-semibold">{{ post.data.title }}</span>
-        {% if post.data.video %}
+        {%- if post.data.video -%}
         <span class="icon tooltip" title="video available">
           <ion-icon src="{{ '/assets/ionicon/videocam.svg' | url }}"></ion-icon>
         </span>
-        {% endif %}
-        {% if post.data.slides %}
+        {%- endif -%}
+        {%- if post.data.slides -%}
         <span class="icon tooltip" title="slides available">
           <ion-icon src="{{ '/assets/ionicon/albums.svg' | url }}"></ion-icon>
         </span>
-        {% endif %}
+        {%- endif -%}
       </a>
     </li>
-    {% endfor %}
+    {%- endfor -%}
   </ul>
 </div>
