@@ -12,7 +12,7 @@ module.exports = async (src, alt, className, outputFormat = 'jpeg') => {
       cacheDuration: '12w',
       formats: [outputFormat],
       urlPath: '/ajs-11ty/assets/avatar/', // path prefix: /ajs-11ty/
-      outputDir: 'assets/avatar/',
+      outputDir: '_site/assets/avatar/',
       widths: [96],
     });
 
